@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
     Navbar,
     NavbarBrand,
@@ -13,56 +13,137 @@ import {
 } from "@nextui-org/react";
 import {AcmeLogo} from "./logo";
 import {ChevronDown, Lock, Activity, Flash, Server, TagUser, Scale} from "@/components/icons/icons";
+import {menuItems, menuItemsDesktop} from "@/HeaderConstants";
+import {useRouter} from "next/navigation";
 
-type IconProps = {
-    fill?: string;
-    size?: number;
-    height?: number;
-    width?: number;
-    className?: string;
-}
-const icons = {
-    chevron: <ChevronDown fill="currentColor" size={16} />,
-    scale: <Scale className="text-warning" fill="currentColor" size={30} />,
-    lock: <Lock className="text-success" fill="currentColor" size={30} />,
-    activity: <Activity className="text-secondary" fill="currentColor" size={30} />,
-    flash: <Flash className="text-primary" fill="currentColor" size={30} />,
-    server: <Server className="text-success" fill="currentColor" size={30} />,
-    user: <TagUser className="text-danger" fill="currentColor" size={30} />,
+type IconType = {
+    icon: JSX.Element;
+    title: string;
+    description: string;
 };
+
+type Icons = {
+    [key: string]: IconType;
+};
+const icons : Icons = {
+    scale: {
+        icon: <Scale className="text-warning" fill="currentColor" size={30} />,
+        title: 'Scale',
+        description: 'ACME scales apps to meet user demand, automagically, based on load.'
+    },
+    lock: {
+        icon: <Lock className="text-success" fill="currentColor" size={30} />,
+        title: 'Lock',
+        description: 'ACME provides secure access control for your apps.'
+    },
+    activity: {
+        icon: <Activity className="text-secondary" fill="currentColor" size={30} />,
+        title: 'Activity',
+        description: 'Real-time metrics to debug issues. Slow query added? We’ll show you exactly where.'
+    },
+    flash: {
+        icon: <Flash className="text-primary" fill="currentColor" size={30} />,
+        title: 'Flash',
+        description: 'ACME runs on ACME, join us and others serving requests at web scale.'
+    },
+    server: {
+        icon: <Server className="text-success" fill="currentColor" size={30} />,
+        title: 'Server',
+        description: 'Applications stay on the grid with high availability and high uptime guarantees.'
+    },
+    user: {
+        icon: <TagUser className="text-danger" fill="currentColor" size={30} />,
+        title: 'User',
+        description: 'Overcome any challenge with a supporting team ready to respond.'
+    },
+};
+const chevIcon = {
+    chevron: <ChevronDown fill="currentColor" size={16} />,
+}
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const router = useRouter();
 
-    const menuItems = [
-        "Home",
-        "Contact us",
-        "About Us",
-        "Cucurbita Services",
-        "Cucurbita Events",
-        "Cucurbita Products",
-        "Cucurbita Blog",
-        "Careers",
-        "Merch",
-    ];
-    const menuItemsDesktop = [
-        "Contact us",
-        "About Us",
-        "Our Services",
-        "Events",
-        "Products",
-        "Blog",
-        "Careers",
-    ];
+    useEffect(() => {
+        const handleScroll = () => {
+            const isScrolled = window.scrollY > 600;
+            setIsScrolled(isScrolled);
+        };
+
+        document.addEventListener('scroll', handleScroll);
+
+        return () => {
+            // cleanup - remove the listener when the component unmounts
+            document.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
 
     return (
-        <Navbar onMenuOpenChange={setIsMenuOpen} maxWidth="full" isBordered>
+        <>
+        {isScrolled && (
+            <Navbar maxWidth={"lg"} className=" flex right-0  bg-primary ext-foreground">
+                <NavbarContent className="hidden lg:flex gap-10 w-full justify-between" justify="center">
+                    <Dropdown>
+                        <NavbarItem>
+                            <DropdownTrigger>
+                                <Button
+                                    disableRipple
+                                    className="p-0 bg-transparent data-[hover=true]:bg-transparent"
+                                    endContent={chevIcon.chevron}
+                                    radius="sm"
+                                    variant="light"
+                                    size="lg"
+                                >
+                                    Cucurbita Services
+                                </Button>
+                            </DropdownTrigger>
+                        </NavbarItem>
+                        <DropdownMenu
+                            aria-label="ACME features"
+                            className="w-[340px]"
+                            itemClasses={{
+                                base: "gap-4",
+                            }}
+                        >
+
+                            {Object.entries(icons).map(([key], index) => (
+                                <DropdownItem
+                                    key={`${key}-${index}`}
+                                    description={icons[key].description}
+                                    startContent={icons[key].icon}
+                                >
+                                    {icons[key].title}
+                                </DropdownItem>
+                            ))}
+
+                        </DropdownMenu>
+                    </Dropdown>
+                    {menuItemsDesktop.map((item, index) => (
+                        <NavbarItem key={`${item}-${index}`}>
+                            <Link
+                                color="foreground"
+                                className="w-full md:hidden lg:flex focus:text-primary hover:text-success"
+                                href={item.path}
+                                size="lg"
+                            >
+                                {item.name}
+                            </Link>
+                        </NavbarItem>
+                    ))}
+                </NavbarContent>
+            </Navbar>
+        )}
+        <Navbar onMenuOpenChange={setIsMenuOpen} maxWidth="full" isBordered shouldHideOnScroll>
+
             <NavbarContent>
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                     className="sm:hidden"
                 />
-                <NavbarBrand>
+                <NavbarBrand onClick={() => router.push("/")} className="cursor-pointer">
                     <AcmeLogo />
                     <p className="font-bold text-inherit">CUCURBITA</p>
                 </NavbarBrand>
@@ -75,7 +156,7 @@ export default function Header() {
                             <Button
                                 disableRipple
                                 className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-                                endContent={icons.chevron}
+                                endContent={chevIcon.chevron}
                                 radius="sm"
                                 variant="light"
                                 size="lg"
@@ -91,60 +172,34 @@ export default function Header() {
                             base: "gap-4",
                         }}
                     >
-                        <DropdownItem
-                            key="autoscaling"
-                            description="ACME scales apps to meet user demand, automagically, based on load."
-                            startContent={icons.scale}
-                        >
-                            Autoscaling
-                        </DropdownItem>
-                        <DropdownItem
-                            key="usage_metrics"
-                            description="Real-time metrics to debug issues. Slow query added? We’ll show you exactly where."
-                            startContent={icons.activity}
-                        >
-                            Usage Metrics
-                        </DropdownItem>
-                        <DropdownItem
-                            key="production_ready"
-                            description="ACME runs on ACME, join us and others serving requests at web scale."
-                            startContent={icons.flash}
-                        >
-                            Production Ready
-                        </DropdownItem>
-                        <DropdownItem
-                            key="99_uptime"
-                            description="Applications stay on the grid with high availability and high uptime guarantees."
-                            startContent={icons.server}
-                        >
-                            +99% Uptime
-                        </DropdownItem>
-                        <DropdownItem
-                            key="supreme_support"
-                            description="Overcome any challenge with a supporting team ready to respond."
-                            startContent={icons.user}
-                        >
-                            +Supreme Support
-                        </DropdownItem>
+
+                        {Object.entries(icons).map(([key], index) => (
+                            <DropdownItem
+                                key={`${key}-${index}`}
+                                description={icons[key].description}
+                                startContent={icons[key].icon}
+                            >
+                                {icons[key].title}
+                            </DropdownItem>
+                        ))}
+
                     </DropdownMenu>
                 </Dropdown>
                 {menuItemsDesktop.map((item, index) => (
                     <NavbarItem key={`${item}-${index}`}>
                         <Link
-                            color={
-                                index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
-                            }
-                            className="w-full"
-                            href="#"
+                            color="foreground"
+                            className="w-full md:hidden lg:flex focus:text-primary hover:text-success"
+                            href={item.path}
                             size="lg"
                         >
-                            {item}
+                            {item.name}
                         </Link>
                     </NavbarItem>
                 ))}
             </NavbarContent>
             <NavbarContent justify="end">
-                <NavbarItem className="hidden border-primary border rounded-md px-8 py-2 lg:flex">
+                <NavbarItem className="hidden border-primary border rounded-md px-8 py-2 lg:flex hover:bg-orange-100">
                     <Link href="#">Merch</Link>
                 </NavbarItem>
             </NavbarContent>
@@ -152,18 +207,17 @@ export default function Header() {
                 {menuItems.map((item, index) => (
                     <NavbarMenuItem key={`${item}-${index}`}>
                         <Link
-                            color={
-                                index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
-                            }
-                            className="w-full"
-                            href="#"
+                            color="foreground"
+                            className="w-full focus:text-primary hover:text-success"
+                            href={item.path}
                             size="lg"
                         >
-                            {item}
+                            {item.name}
                         </Link>
                     </NavbarMenuItem>
                 ))}
             </NavbarMenu>
         </Navbar>
+        </>
     );
 }
