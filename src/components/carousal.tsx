@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation,FreeMode, Thumbs } from 'swiper/modules';
 import {HeroImages} from "../../public/images/Images";
+import NewCard from "@/components/ui/Card";
 
 const App = () => {
     const progressCircle = useRef<SVGSVGElement | null>(null);
@@ -39,12 +40,23 @@ const App = () => {
                         thumbs={{ swiper: thumbsSwiper }}
                         modules={[Autoplay, Pagination, Navigation, FreeMode, Thumbs]}
                         onAutoplayTimeLeft={onAutoplayTimeLeft}
-                        className="mySwiper2 w-[100vw] max-h-screen"
+                        className="mySwiper2 w-[100vw] max-h-screen relative"
                     >
                         {HeroImages.map((image, index) => (
                             <SwiperSlide key={index}>
                                 <div className="w-full h-full relative image-wrapper">
-                                    <Image src={image} alt="img" width={1000} height={100} />
+                                    <Image src={image} alt="img" width={1000} height={100}/>
+                                    <div
+                                        className="absolute flex items-center z-40 bottom-96  -top-20 left-24">
+                                        <span className="text-6xl font-bold text-white text-start">The Best <br/>
+                                            Pumpkin Items
+                                            <br/>
+                                            In Your Home
+                                        </span>
+                                    </div>
+                                    <div className="absolute flex items-center z-40 bottom-96  -top-64 right-24">
+                                        <NewCard/>
+                                    </div>
                                 </div>
                             </SwiperSlide>
                         ))}
@@ -54,6 +66,7 @@ const App = () => {
                             </svg>
                             <span ref={progressContent}></span>
                         </div>
+
                     </Swiper>
                     <Swiper
                         onSwiper={setThumbsSwiper}
