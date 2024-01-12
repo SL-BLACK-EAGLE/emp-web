@@ -81,7 +81,7 @@ const config: Config = {
       },
     },
   }),
-    function ({ addBase }) {
+    function ({ addBase }: { addBase: (styles: Record<string, any>) => void }) {
       addBase({
         'h1': { color: '#123456', fontSize: '3.5rem', lineHeight: '1.25' },
         'h2': { color: '#234567', fontSize: '2.5rem', lineHeight: '1.3' },
