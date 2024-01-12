@@ -13,7 +13,8 @@ import NewCard from "@/components/ui/Card";
 const App = () => {
     const progressCircle = useRef<SVGSVGElement | null>(null);
     const progressContent = useRef<HTMLSpanElement | null>(null);
-    const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    // @ts-ignore
+    const [thumbsSwiper, setThumbsSwiper] = useState<Swiper | null>(null);
     const onAutoplayTimeLeft = (s: any, time: number, progress: number) => {
         if (progressCircle.current) {
             progressCircle.current.style.setProperty('--progress', `${1 - progress}`);
