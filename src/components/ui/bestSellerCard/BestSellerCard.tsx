@@ -1,5 +1,5 @@
 import React from "react";
-import "./BestSellerCard.css";
+import "./styles.css";
 
 type BestSellerCardProps = {
     title: string;
