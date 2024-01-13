@@ -3,7 +3,6 @@
 import React from 'react'
 import {Fade} from "react-awesome-reveal";
 import BestSellerCard from "@/components/ui/bestSellerCard/BestSellerCard";
-import {BestSellerCardConstants} from "@/BestSellerCardConstants";
 const OurBestSellerProducts = () => {
     return (
         <Fade cascade damping={1}>
