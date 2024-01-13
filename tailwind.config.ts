@@ -7,6 +7,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    'node_modules/flowbite-react/lib/esm/**/*.js',
   ],
   theme: {
     extend: {
@@ -42,7 +43,9 @@ const config: Config = {
     },
   },
   darkMode: "class",
-  plugins: [nextui({
+  plugins: [
+    require('flowbite/plugin'),
+      nextui({
     themes: {
       "purple-dark": {
         extend: "dark", // <- inherit default values from dark theme

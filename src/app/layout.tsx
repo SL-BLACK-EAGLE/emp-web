@@ -5,6 +5,7 @@ import React from "react";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import {Providers} from "@/app/providers";
+import { ThemeModeScript } from "flowbite-react";
 
 const poppins = Poppins({ weight: ["100","200","300","400","500","600","700","800","900"], subsets: ['latin']})
 
@@ -19,16 +20,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+      <html lang="en">
+      <head>
+          <ThemeModeScript/>
+      </head>
       <body className={poppins.className}>
-        <Providers>
-            <Header />
-            <main className="w-full light bg-background text-foreground overflow-x-hidden">
+      <Providers>
+          <Header/>
+          <main className="w-full light bg-background text-foreground overflow-x-hidden">
               {children}
-            </main>
-            <Footer />
-        </Providers>
+          </main>
+          <Footer/>
+      </Providers>
       </body>
-    </html>
+      </html>
   )
 }

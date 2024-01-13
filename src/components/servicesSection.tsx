@@ -1,35 +1,35 @@
 "use client";
 import React from 'react'
 import {Fade} from "react-awesome-reveal";
+import HorizontalCard from "@/components/ui/HorizontalCard";
+import {Button} from "@nextui-org/react";
 
 const ServicesSection = () => {
     return (
         <Fade cascade damping={1}>
-        <section className="min-h-screen w-full items-center justify-center flex flex-col gap-4 bg5">
-            <Fade cascade damping={0.2}>
-                <h1 className=" font-bold text-center">Welcome to Cucurbita</h1>
-                <p className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quas.</p>
-                <div className="mt-10 gap-12 flex flex-col">
-                    <Fade cascade damping={0.5}>
-                    <div>
-                        <h2 className="font-bold text-center">Our Mission</h2>
-                        <p className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-                            quas.</p>
+            <section className="justify-center items-center flex flex-col gap-16 bg-gray-50">
+                <div className="grid grid-cols-1 lg:grid-cols-2 justify-center gap-12">
+                    <h1 className=" font-bold text-center mb-4">We Providing Services <br/> Since 2023 With Proud.</h1>
+                    <div className="justify-center px-20 items-center flex">
+                        <p className="text-center">Step into a world where pumpkins take center stage, and enchantment knows no bounds. Welcome to Pumpkin Enchantment, your gateway to a whimsical village brimming with innovative pumpkin wonders, delectable delights, and festivities that spark the imagination. Join us online or venture into our extraordinary pumpkin realm for an unforgettable experience celebrating the magic of the season.</p>
                     </div>
-                    <div>
-                        <h2 className="font-bold text-center">Our Vision</h2>
-                        <p className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-                            quas.</p>
+                    <div className="justify-center flex">
+                        <HorizontalCard imgSrc="/images/image1.png"/>
                     </div>
-                    <div>
-                        <h2 className="font-bold text-center">Our Values</h2>
-                        <p className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-                            quas.</p>
+                    <div className="justify-center flex">
+                        <HorizontalCard imgSrc="/images/image2.png"/>
                     </div>
-                    </Fade>
+                    <div className="justify-center flex">
+                        <HorizontalCard imgSrc="/images/image3.png"/>
+                    </div>
+                    <div className="justify-center flex">
+                        <HorizontalCard imgSrc="/images/image1.png"/>
+                    </div>
                 </div>
-            </Fade>
-        </section>
+                <div className="flex justify-center items-center">
+                    <Button variant="bordered" className="hover:bg-primary hover:text-white" color="primary" size="lg">Learn More</Button>
+                </div>
+            </section>
         </Fade>
     )
 }
