@@ -5,7 +5,7 @@
 }
 
 
-.card {
+.best-seller-card {
     color: var(--clr-neutral-100);
     background-size: cover;
     padding: 10rem 0 0;
@@ -15,12 +15,12 @@
     transition: transform 500ms ease;
 }
 
-.card:hover,
-.card:focus-within {
+.best-seller-card:hover,
+.best-seller-card:focus-within {
     transform: scale(1.05);
 }
 
-.card-content {
+.best-seller-card-content {
     --padding: 1.5rem;
     padding: var(--padding);
     background: linear-gradient(
@@ -30,17 +30,17 @@
     );
 }
 
-.card-title {
+.best-seller-card-title {
     position: relative;
     width: max-content;
 }
 
-.card:hover .card-title::after,
-.card:focus-within .card-title::after {
+.best-seller-card:hover .best-seller-card-title::after,
+.best-seller-card:focus-within .best-seller-card-title::after {
     transform: scaleX(1);
 }
 
-.card-title::after {
+.best-seller-card-title::after {
     content: "";
     position: absolute;
     height: 4px;
@@ -53,38 +53,38 @@
 }
 
 @media (hover) {
-    .card-content {
+    .best-seller-card-content {
         transform: translateY(65%);
         transition: transform 500ms ease;
     }
 
-    .card-content > *:not(.card-title) {
+    .best-seller-card-content > *:not(.best-seller-card-title) {
         opacity: 0;
         transition: opacity 500ms linear;
     }
 
-    .card:hover .card-content > *:not(.card-title),
-    .card:focus-within .card-content > *:not(.card-title) {
+    .best-seller-card:hover .best-seller-card-content > *:not(.best-seller-card-title),
+    .best-seller-card:focus-within .best-seller-card-content > *:not(.best-seller-card-title) {
         opacity: 1;
         transition-delay: 700ms;
     }
 
-    .card:hover .card-content,
-    .card:focus-within .card-content {
+    .best-seller-card:hover .best-seller-card-content,
+    .best-seller-card:focus-within .best-seller-card-content {
         transform: translateY(0);
         transition-delay: 500ms;
     }
 
-    .card:focus-within .card-content {
+    .best-seller-card:focus-within .best-seller-card-content {
         transition-duration: 0ms;
     }
 
-    .card-title::after {
+    .best-seller-card-title::after {
         transform: scaleX(0);
     }
 }
 
-.button {
+ .button {
     cursor: pointer;
     display: inline-block;
     text-decoration: none;
@@ -99,7 +99,7 @@
     background-color: var(--clr-neutral-100);
 }
 
-.card-body {
+.best-seller-card-body {
     color: rgb(255, 255, 255,0.85);
 }
 

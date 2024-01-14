@@ -15,4 +15,9 @@ export const BestSellerCardConstants = [
         title: "Cucurbita Blog",
         content: "Cucurbita Blog is a full-service blog that provides consulting, writing, and design services for businesses and organizations. We specialize in web development, mobile development, and design.",
     },
+    {
+        bgImage: "/images/image1.png",
+        title: "Cucurbita Events",
+        content: "Cucurbita Events is a full-service event planning company that provides consulting, planning, and design services for businesses and organizations. We specialize in corporate events, weddings, and parties.",
+    },
 ];

@@ -14,10 +14,10 @@ const BestSellerCard = (
         bgImage,
     }: BestSellerCardProps) => (
 
-    <div className="card" style={{ backgroundImage: `url(${bgImage})` }}>
-        <div className="card-content">
-            <h5 className="card-title">{title}</h5>
-            <p className="card-body">
+    <div className="best-seller-card" style={{ backgroundImage: `url(${bgImage})` }}>
+        <div className="best-seller-card-content">
+            <h5 className="best-seller-card-title">{title}</h5>
+            <p className="best-seller-card-body">
                 {content}
             </p>
             <a href="#" className="button">

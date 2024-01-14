@@ -124,6 +124,8 @@ section{
     padding: 40px 40px;
     min-height: 100dvh;
 }
-
+.grid {
+    align-items: stretch;
+}
 
 
