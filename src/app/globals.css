@@ -34,6 +34,25 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.bg6 {
+    background-image: url(../../src/assets/home_bg6.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bg7 {
+    background-image: url(../../src/assets/home_bg7.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bg8 {
+    background-image: url(../../src/assets/home_bg8.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 
 body {
     background: #eee;
@@ -128,4 +147,6 @@ section{
     align-items: stretch;
 }
 
-
+.rotate-image {
+    transform: rotate(10deg);
+}

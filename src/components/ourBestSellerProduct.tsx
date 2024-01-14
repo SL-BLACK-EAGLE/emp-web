@@ -1,13 +1,13 @@
 "use client";
 
-import React from 'react'
 import {Fade} from "react-awesome-reveal";
 import BestSellerCard from "@/components/ui/bestSellerCard/BestSellerCard";
 import {BestSellerCardConstants} from "@/BestSellerCardConstants";
 const OurBestSellerProducts = () => {
     return (
         <Fade cascade damping={1}>
-            <section className="justify-center items-center flex flex-col gap-16 bg-gray-50">
+            <section className="justify-center items-center flex flex-col gap-16">
+                {/* eslint-disable-next-line react/jsx-no-undef */}
                 <Fade cascade>
                <div>
                    <h1 className="font-bold">Our Best Seller Product</h1>

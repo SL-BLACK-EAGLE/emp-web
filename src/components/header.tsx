@@ -6,7 +6,6 @@ import {
     NavbarBrand,
     NavbarContent,
     NavbarItem,
-    Link,
     Button,
     NavbarMenuToggle,
     NavbarMenu, NavbarMenuItem, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem
@@ -15,6 +14,8 @@ import {AcmeLogo} from "./logo";
 import {ChevronDown, Lock, Activity, Flash, Server, TagUser, Scale} from "@/components/icons/icons";
 import {menuItems, menuItemsDesktop} from "@/HeaderConstants";
 import {useRouter} from "next/navigation";
+import Link from "next/link";
+
 
 type IconType = {
     icon: JSX.Element;
@@ -84,7 +85,7 @@ export default function Header() {
     return (
         <>
         {isScrolled && (
-            <Navbar maxWidth={"lg"} className=" flex right-0  bg-primary ext-foreground">
+            <Navbar maxWidth={"lg"} className="flex right-0  bg-primary ext-foreground z-40">
                 <NavbarContent className="hidden lg:flex gap-10 w-full justify-between" justify="center">
                     <Dropdown>
                         <NavbarItem>
@@ -127,7 +128,6 @@ export default function Header() {
                                 color="foreground"
                                 className="w-full md:hidden lg:flex focus:text-primary hover:text-success"
                                 href={item.path}
-                                size="lg"
                             >
                                 {item.name}
                             </Link>
@@ -136,7 +136,7 @@ export default function Header() {
                 </NavbarContent>
             </Navbar>
         )}
-        <Navbar onMenuOpenChange={setIsMenuOpen} maxWidth="full" isBordered shouldHideOnScroll>
+        <Navbar onMenuOpenChange={setIsMenuOpen} maxWidth="full" isBordered shouldHideOnScroll className="">
 
             <NavbarContent>
                 <NavbarMenuToggle
@@ -191,7 +191,6 @@ export default function Header() {
                             color="foreground"
                             className="w-full md:hidden lg:flex focus:text-primary hover:text-success"
                             href={item.path}
-                            size="lg"
                         >
                             {item.name}
                         </Link>
@@ -199,8 +198,8 @@ export default function Header() {
                 ))}
             </NavbarContent>
             <NavbarContent justify="end">
-                <NavbarItem className="hidden border-primary border rounded-md px-8 py-2 lg:flex hover:bg-orange-100">
-                    <Link href="#">Merch</Link>
+                <NavbarItem className="hidden lg:flex">
+                    <Link className="border-primary border-2 rounded-md px-8 py-2 lg:flex hover:bg-orange-100" href="/merch">Merch</Link>
                 </NavbarItem>
             </NavbarContent>
             <NavbarMenu>
@@ -210,7 +209,6 @@ export default function Header() {
                             color="foreground"
                             className="w-full focus:text-primary hover:text-success"
                             href={item.path}
-                            size="lg"
                         >
                             {item.name}
                         </Link>
