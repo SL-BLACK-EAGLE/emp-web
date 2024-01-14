@@ -4,6 +4,7 @@ import React from 'react'
 import {Fade} from "react-awesome-reveal";
 import Image from "next/image";
 import {BreadcrumbItem, Breadcrumbs} from "@nextui-org/react";
+import AboutCompanySection from "@/components/about/AboutCompanySection";
 
 const AboutPage = () => {
 
@@ -31,6 +32,7 @@ const AboutPage = () => {
 
                 </Fade>
             </section>
+            <AboutCompanySection/>
         </Fade>
     )
 }
