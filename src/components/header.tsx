@@ -29,32 +29,32 @@ type Icons = {
 const icons : Icons = {
     scale: {
         icon: <Scale className="text-warning" fill="currentColor" size={30} />,
-        title: 'Scale',
-        description: 'ACME scales apps to meet user demand, automagically, based on load.'
+        title: 'Retail Services',
+        description: 'Cucurbita scales apps to meet user demand, automagically, based on load.'
     },
     lock: {
         icon: <Lock className="text-success" fill="currentColor" size={30} />,
-        title: 'Lock',
-        description: 'ACME provides secure access control for your apps.'
+        title: 'Security Services',
+        description: 'Cucurbita provides secure access control for your apps.'
     },
     activity: {
         icon: <Activity className="text-secondary" fill="currentColor" size={30} />,
-        title: 'Activity',
+        title: 'Training Services',
         description: 'Real-time metrics to debug issues. Slow query added? We’ll show you exactly where.'
     },
     flash: {
         icon: <Flash className="text-primary" fill="currentColor" size={30} />,
-        title: 'Flash',
-        description: 'ACME runs on ACME, join us and others serving requests at web scale.'
+        title: 'Delivery Services',
+        description: 'Cucurbita runs on Cucurbita, join us and others serving requests at web scale.'
     },
     server: {
         icon: <Server className="text-success" fill="currentColor" size={30} />,
-        title: 'Server',
+        title: 'Storage Services',
         description: 'Applications stay on the grid with high availability and high uptime guarantees.'
     },
     user: {
         icon: <TagUser className="text-danger" fill="currentColor" size={30} />,
-        title: 'User',
+        title: 'Partnership Services',
         description: 'Overcome any challenge with a supporting team ready to respond.'
     },
 };
@@ -103,7 +103,7 @@ export default function Header() {
                             </DropdownTrigger>
                         </NavbarItem>
                         <DropdownMenu
-                            aria-label="ACME features"
+                            aria-label="Cucurbita features"
                             className="w-[340px]"
                             itemClasses={{
                                 base: "gap-4",
@@ -166,7 +166,7 @@ export default function Header() {
                         </DropdownTrigger>
                     </NavbarItem>
                     <DropdownMenu
-                        aria-label="ACME features"
+                        aria-label="Cucurbita features"
                         className="w-[340px]"
                         itemClasses={{
                             base: "gap-4",

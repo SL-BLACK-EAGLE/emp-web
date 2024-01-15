@@ -1,7 +1,6 @@
 "use client";
 
 import HeroCarousal from "@/components/carousal";
-import DescriptionSection from "@/components/descriptionSection";
 import ServicesSection from "@/components/servicesSection";
 import ReviewSection from "@/components/reviewSection";
 import HowItWorks from "@/components/howItWorks";
@@ -17,7 +16,7 @@ export default function Home() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 1000); // 2 seconds
+        }, 1000); // 1 seconds
 
         return () => clearTimeout(timer); // cleanup on unmount
     }, []);
