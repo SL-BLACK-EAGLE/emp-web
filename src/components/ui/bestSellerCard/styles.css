@@ -7,11 +7,12 @@
 
 .best-seller-card {
     color: var(--clr-neutral-100);
-    background-size: cover;
+    background-size: contain;
     padding: 10rem 0 0;
     max-width: 35ch;
     border-radius: 0.5rem;
     overflow: hidden;
+    background-repeat: no-repeat;
     transition: transform 500ms ease;
 }
 

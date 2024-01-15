@@ -8,7 +8,7 @@ import RoadMap from "@/components/RoadMap";
 import OurBestSellerProducts from "@/components/ourBestSellerProduct";
 import {useEffect, useState} from "react";
 import Loading from "@/app/loading";
-import AboutCompanySection from "@/components/about/AboutCompanySection";
+import GallerySection from "@/components/gallerySection";
 
 export default function Home() {
     const [isLoading, setIsLoading] = useState(true);
@@ -26,9 +26,9 @@ export default function Home() {
         <div className="">
             <HeroCarousal />
             <HowItWorks />
-            <AboutCompanySection />
             <OurBestSellerProducts />
             <ServicesSection />
+            <GallerySection />
             <RoadMap />
             <ReviewSection />
         </div>
